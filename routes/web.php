@@ -36,4 +36,6 @@ require __DIR__ . '/auth.php';
 //     Route::get('role/create', 'create')->middleware('can:create role');
 // });
 
-Route::resource('role', RoleController::class);
+Route::middleware('auth')->group(function () {
+    Route::resource('role', RoleController::class);
+});
